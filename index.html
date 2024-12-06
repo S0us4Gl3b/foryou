@@ -3,37 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/styles/home-style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/src/styles/home.css">
+    <link rel="stylesheet" href="/src/styles/contador.css">
+    <link rel="stylesheet" href="/src/styles/player.css">
+    <script src="/src/scripts/contador.js"></script>
+    <script src="/src/scripts/player.js"></script>
+    <title>For You</title>
 </head>
 <body>
     <section>
         <div class="home">
             <p class="foryou_Name">
-                ForYou
+                <img src="/src/images/logo/For.png" alt="">
             </p>
-            <img src="/src/images/normal.jpg" alt="" id="img-principal">
+            
+            <div id="principal_img">
+                <img src="./src/images/bico.jpg" alt="Imagens do casal">
+            </div>
+
             <h1 id="name">
                 Glebson e Flávia
             </h1>
 
             <p class="text">
-                Sou muito feliz em ter você ao meu lado, cada minuto que passamos juntos me traz mais certeza do quanto você é a pessoa certa. O tempo só mostrou o quanto fomos feitos um pro outro e o wquanto nois merecemos, espero compartilhar cada intante da minha vida contigo por muitos anos.
+                Sou muito feliz em ter você ao meu lado, cada minuto que passamos juntos me traz mais certeza do quanto você é a pessoa certa. O tempo só mostrou o quanto fomos feitos um pro outro e o quanto nos merecemos, espero compartilhar cada intante da minha vida contigo por muitos anos.
             </p>
 
             <div class="title">
-                Juntos Há
+                Juntos Há ...
             </div>
 
             <ul id="contador">
-                <li id="anos">01<span>Ano</span></li>
-                <li id="meses">02<span>Meses</span></li>
-                <li id="dias">05<span>Dias</span></li>
-                <li id="horas">06<span>Horas</span></li>
-                <li id="minutos">20<span>Minutos</span></li>
+                <li id="anos">01<span>ano</span></li>
+                <li id="dias">05<span>dias</span></li>
+                <li id="minutos">20<span>minutos</span></li>
+                <!--Separação das colunas-->
+                <li id="meses">02<span>mes</span></li>
+                <li id="horas">03<span>horas</span></li>
                 <li id="segundos">35<span>Segundos</span></li>
             </ul>              
         </div>
     </section>
-</body>
+    
+    <section>
+      <h2>Reproduza seu vídeo do YouTube</h2>
+      <input type="text" id="youtubeLink" placeholder="Cole o link do YouTube aqui" />
+      <button id="playButton">Tocar Vídeo</button>
+      <div id="player"></div>
+  </section>
+
+  <script>
+      // Seleciona os elementos
+      const youtubeLinkInput = document.getElementById('youtubeLink');
+      const playButton = document.getElementById('playButton');
+      const playerDiv = document.getElementById('player');
+
+      // Função para embutir o player diretamente
+      playButton.addEventListener('click', function() {
+          const url = youtubeLinkInput.value.trim();
+
+          // Verifica se a URL não está vazia
+          if (url) {
+              const videoId = extractVideoId(url);
+
+              if (videoId) {
+                  playerDiv.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+              } else {
+                  alert('Por favor, insira um link válido do YouTube.');
+              }
+          } else {
+              alert('Por favor, cole o link do YouTube.');
+          }
+      });
+
+      // Função para extrair o ID do vídeo do YouTube
+      function extractVideoId(url) {
+          const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+          const match = url.match(regex);
+          return match ? match[1] : null;
+      }
+  </script>
+
 </html>
