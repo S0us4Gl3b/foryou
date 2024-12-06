@@ -80,7 +80,7 @@
       });
 
       // Função para extrair o ID do vídeo do YouTube
-      function extractVideoId(url) {
+      function extractVideoId(urlb) {
           const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
           const match = url.match(regex);
           return match ? match[1] : null;
