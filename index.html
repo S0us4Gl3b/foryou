@@ -52,39 +52,4 @@
       <div id="player"></div>
   </section>
 
-  <script>
-      // Seleciona os elementos
-      const youtubeLinkInput = document.getElementById('youtubeLink');
-      const playButton = document.getElementById('playButton');
-      const playerDiv = document.getElementById('player');
-
-      const urlb = 'https://www.youtube.com/watch?v=RB-RcX5DS5A'
-
-
-      // Função para embutir o player diretamente
-      playButton.addEventListener('click', function() {
-          const url = youtubeLinkInput.value.trim();
-
-          // Verifica se a URL não está vazia
-          if (url) {
-              const videoId = extractVideoId(url);
-
-              if (videoId) {
-                  playerDiv.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-              } else {
-                  alert('Por favor, insira um link válido do YouTube.');
-              }
-          } else {
-              alert('Por favor, cole o link do YouTube.');
-          }
-      });
-
-      // Função para extrair o ID do vídeo do YouTube
-      function extractVideoId(urlb) {
-          const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-          const match = url.match(regex);
-          return match ? match[1] : null;
-      }
-  </script>
-
 </html>
