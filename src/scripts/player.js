@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const playButton = document.getElementById('playButton');
     const playerDiv = document.getElementById('player');
 
-    const srcOriginal = "https://www.youtube.com/embed/${videoId}?autoplay=1"
 
     // Função para extrair o ID do vídeo do YouTube a partir da URL
     function extractVideoId(url) {
@@ -14,14 +13,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Função para embutir o player com o ID do vídeo
     function loadVideo(videoId) {
-        const videID2 = 'https://www.youtube.com/watch?v=QtXby3twMmI'
+        const videID2 = QtXby3twMmI
         
         
         playerDiv.innerHTML = `
             <iframe 
                 width="560" 
                 height="315" 
-                src= "${videID2}?autoplay=1"
+                src="https://www.youtube.com/embed/${videoID2}?autoplay=1" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen>
