@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Função chamada pela API do YouTube quando ela estiver pronta
     window.onYouTubeIframeAPIReady = function () {
         console.log("API do YouTube carregada.")
+        iniciaVideo()
     }
 
     // Função para criar o player do YouTube
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    iniciaVideo()
+    
     // Evento de clique no botão para tocar o vídeo
     playButton.addEventListener('click', () => {
         iniciaVideo()
