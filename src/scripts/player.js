@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     const youtubeLinkInput = document.getElementById('youtubeLink');
-    const playPauseButton = document.getElementById('playPauseButton');
+    const playButton = document.getElementById('playButton');
     const playerDiv = document.getElementById('player');
+    const pauseButton = document.getElementById('playpause');
 
     let player; // Variável para armazenar o player do YouTube
 
-    const urlFixaParaVideo = 'https://www.youtube.com/watch?v=VPRjCeoBqrI';
+    const urlFixaParaVideo = 'https://www.youtube.com/watch?v=VPRjCeoBqrI'
 
     // Função para extrair o ID do vídeo do YouTube a partir da URL
     function extractVideoId(url) {
@@ -16,9 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Função chamada pela API do YouTube quando ela estiver pronta
     window.onYouTubeIframeAPIReady = function () {
-        console.log("API do YouTube carregada.");
-        iniciaVideo();
-    };
+        console.log("API do YouTube carregada.")
+    }
 
     // Função para criar o player do YouTube
     function createPlayer(videoId) {
@@ -29,14 +29,18 @@ document.addEventListener('DOMContentLoaded', function () {
             videoId: videoId,
             playerVars: {
                 autoplay: 1,
-                controls: 1,
+            },
+            events: {
+                onReady: function(event) {
+                    event.target.playVideo(); // Inicia o vídeo automaticamente quando o player estiver pronto
+                }
             }
-        });
+        })
     }
 
-    function iniciaVideo() {
-        const videoUrl = urlFixaParaVideo; //youtubeLinkInput.value.trim();
-        const videoId = extractVideoId(videoUrl);
+    function iniciaVideo () {
+        const videoUrl = urlFixaParaVideo //youtubeLinkInput.value.trim();
+        const videoId = extractVideoId(videoUrl)
 
         if (videoId) {
             if (player) {
@@ -45,38 +49,33 @@ document.addEventListener('DOMContentLoaded', function () {
                 createPlayer(videoId); // Cria o player se ele ainda não existir
             }
         } else {
-            alert('Por favor, insira um link válido do YouTube.');
+            alert('Por favor, insira um link válido do YouTube.')
         }
     }
 
-    // Evento de clique no botão para alternar entre play/pause
-    playPauseButton.addEventListener('click', () => {
+
+    // Evento de clique no botão para tocar o vídeo
+    playButton.addEventListener('click', () => {
+        iniciaVideo()
+    })
+
+    // Evento de clique no botão para pausar ou retomar o vídeo
+    pauseButton.addEventListener('click', () => {
         if (player && player.getPlayerState) {
             const playerState = player.getPlayerState();
-
-            switch (playerState) {
-                case YT.PlayerState.PLAYING:
-                    player.pauseVideo(); // Pausa o vídeo
-                    playPauseButton.textContent = 'Play'; // Atualiza o texto do botão
-                    break;
-
-                case YT.PlayerState.PAUSED:
-                case YT.PlayerState.CUED:
-                    player.playVideo(); // Retoma o vídeo
-                    playPauseButton.textContent = 'Pause'; // Atualiza o texto do botão
-                    break;
-
-                default:
-                    alert('O player ainda não foi iniciado ou está carregando.');
+            if (playerState === YT.PlayerState.PLAYING) {
+                player.pauseVideo(); // Pausa o vídeo
+            } else if (playerState === YT.PlayerState.PAUSED) {
+                player.playVideo(); // Retoma o vídeo
             }
         } else {
-            alert('O player ainda não foi iniciado.');
+            alert('O player ainda não foi iniciado.')
         }
-    });
+    })
 
     // Adiciona o script da API do YouTube dinamicamente
-    const scriptTag = document.createElement('script');
-    scriptTag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
+    const scriptTag = document.createElement('script')
+    scriptTag.src = "https://www.youtube.com/iframe_api"
+    const firstScriptTag = document.getElementsByTagName('script')[0]
+    firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag)
 });
