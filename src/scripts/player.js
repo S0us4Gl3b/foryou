@@ -4,7 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const playerDiv = document.getElementById('player');
     const pauseButton = document.getElementById('playpause');
 
-    let player; // Variável para armazenar o player do YouTube
+    let player // Variável para armazenar o player do YouTube
+
+
+    let estadoBtnPlay = 0
 
     const urlFixaParaVideo = 'https://www.youtube.com/watch?v=VPRjCeoBqrI'
 
@@ -57,7 +60,13 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Evento de clique no botão para tocar o vídeo
     playButton.addEventListener('click', () => {
-        iniciaVideo()
+        
+        if (estadoBtnPlay === 0 ){
+            iniciaVideo()
+            estadoBtnPlay = 1
+        }
+        
+        
     })
 
     // Evento de clique no botão para pausar ou retomar o vídeo
