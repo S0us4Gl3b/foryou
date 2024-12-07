@@ -30,7 +30,13 @@ document.addEventListener('DOMContentLoaded', function () {
             videoId: videoId,
             playerVars: {
                 autoplay: 1,
+                controls:1
             },
+            events: {
+                onReady: function(event) {
+                    event.target.playVideo(); // Inicia o vídeo automaticamente quando o player estiver pronto
+                }
+            }
         })
     }
 
