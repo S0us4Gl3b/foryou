@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Função para embutir o player com o ID do vídeo
     function loadVideo(videoId) {
-        const videID2 = 'QtXby3twMmI'
+        const videoID2 = 'QtXby3twMmI'
         
         
         playerDiv.innerHTML = `
