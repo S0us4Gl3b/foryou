@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const youtubeLinkInput = document.getElementById('youtubeLink');
     const playButton = document.getElementById('playButton');
     const playerDiv = document.getElementById('player');
-    const pause = document.getElementById('playpause')
+    const pauseButton = document.getElementById('playpause');
 
-    let player
+    let player; // Variável para armazenar o player do YouTube
 
     // Função para extrair o ID do vídeo do YouTube a partir da URL
     function extractVideoId(url) {
@@ -13,22 +13,22 @@ document.addEventListener('DOMContentLoaded', function () {
         return match ? match[1] : null;
     }
 
-    // Função para embutir o player com o ID do vídeo
-    function loadVideo(videoId) {
-        
-        const videoID2 = 'QtXby3twMmI'
-        
-        playerDiv.innerHTML = `
-            <iframe 
-                width="560" 
-                height="315" 
-                src="https://www.youtube.com/embed/${videoID2}?autoplay=1" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>`;
+    // Função chamada pela API do YouTube quando ela estiver pronta
+    window.onYouTubeIframeAPIReady = function () {
+        console.log("API do YouTube carregada.");
+    };
 
-        player = new YT.Player('youtubePlayer');
+    // Função para criar o player do YouTube
+    function createPlayer(videoId) {
+        playerDiv.innerHTML = ''; // Limpa o player anterior
+        player = new YT.Player('player', {
+            height: '315',
+            width: '560',
+            videoId: videoId,
+            playerVars: {
+                autoplay: 1,
+            },
+        });
     }
 
     // Evento de clique no botão para tocar o vídeo
@@ -37,22 +37,33 @@ document.addEventListener('DOMContentLoaded', function () {
         const videoId = extractVideoId(videoUrl);
 
         if (videoId) {
-            loadVideo(videoId); // Reproduz o vídeo se o ID for encontrado
+            if (player) {
+                player.loadVideoById(videoId); // Recarrega o vídeo no player existente
+            } else {
+                createPlayer(videoId); // Cria o player se ele ainda não existir
+            }
         } else {
             alert('Por favor, insira um link válido do YouTube.');
         }
     });
 
-    pause.addEventListener('click', () => {
-        if(player) {
-            const playerState = player.getPlayerState()
-            if(playerState === YT.PlayerState.PLAYING) {
-                player.pauseVideo()
+    // Evento de clique no botão para pausar ou retomar o vídeo
+    pauseButton.addEventListener('click', () => {
+        if (player && player.getPlayerState) {
+            const playerState = player.getPlayerState();
+            if (playerState === YT.PlayerState.PLAYING) {
+                player.pauseVideo(); // Pausa o vídeo
+            } else if (playerState === YT.PlayerState.PAUSED) {
+                player.playVideo(); // Retoma o vídeo
             }
         } else {
             alert('O player ainda não foi iniciado.');
         }
+    });
 
-    })
-
+    // Adiciona o script da API do YouTube dinamicamente
+    const scriptTag = document.createElement('script');
+    scriptTag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
 });
