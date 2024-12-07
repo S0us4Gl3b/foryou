@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 let dataAtual = new Date()
-    const dataInicioNamoro = new Date('2008-06-05T00:00:00')
+    const dataInicioNamoro = new Date('2023-08-13T00:00:00')
 
     function atualizarValores (anos, meses, dias, horas, minutos, segundos) {
 
