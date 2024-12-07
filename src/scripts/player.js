@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const youtubeLinkInput = document.getElementById('youtubeLink');
     const playButton = document.getElementById('playButton');
     const playerDiv = document.getElementById('player');
+    const pause = document.getElementById('playpause')
 
+    let player
 
     // Função para extrair o ID do vídeo do YouTube a partir da URL
     function extractVideoId(url) {
@@ -13,8 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Função para embutir o player com o ID do vídeo
     function loadVideo(videoId) {
-        const videoID2 = 'QtXby3twMmI'
         
+        const videoID2 = 'QtXby3twMmI'
         
         playerDiv.innerHTML = `
             <iframe 
@@ -25,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen>
             </iframe>`;
+
+        player = new YT.Player('youtubePlayer');
     }
 
     // Evento de clique no botão para tocar o vídeo
@@ -38,4 +42,17 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Por favor, insira um link válido do YouTube.');
         }
     });
+
+    pause.addEventListener('click', () => {
+        if(player) {
+            const playerState = player.getPlayerState()
+            if(playerState === YT.PlayerState.PLAYING) {
+                player.pauseVideo()
+            }
+        } else {
+            alert('O player ainda não foi iniciado.');
+        }
+
+    })
+
 });
