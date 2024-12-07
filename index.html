@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/src/styles/player.css">
     <script src="/src/scripts/contador.js"></script>
     <script src="/src/scripts/player.js"></script>
+    <script src="/src/scripts/animações.js"></script>
 
     <script src="https://www.youtube.com/iframe_api"></script>
     <title>For You</title>
@@ -48,12 +49,14 @@
     </section>
     
     <section>
-        <h2>Reproduza seu vídeo do YouTube</h2>
-        <input type="text" id="youtubeLink" placeholder="Cole o link do YouTube aqui" />
-        <button id="playButton">Tocar Vídeo</button>
-        <button id="playpause">pause</button>
-        
-        <div id="player"></div>
+
+        <div id="playmusic">
+            <button id="playButton">Tocar Música </button>
+            <img src="/src/images/disco.png" id="disco">
+            <button id="playpause">pause</button>
+            <div id="player"></div>
+        </div>
+
     </section>
 
    

@@ -57,16 +57,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    
     // Evento de clique no botão para tocar o vídeo
     playButton.addEventListener('click', () => {
-        
-        if (estadoBtnPlay === 0 ){
-            iniciaVideo()
-            estadoBtnPlay = 1
-        }
-        
-        
+        iniciaVideo()
     })
 
     // Evento de clique no botão para pausar ou retomar o vídeo

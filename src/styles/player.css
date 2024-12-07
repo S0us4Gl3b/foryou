@@ -1,3 +1,49 @@
 #player {
-    display: ;
+    display: none;
+}
+
+#playmusic {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    gap: 15px;
+}
+
+#playmusic button {
+    border-style: none;
+}
+
+#playButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
+    height: 35px;
+    border-radius: 10px;
+    background-color: #DC2626;
+    color: white;
+    font-size: 18px;
+}
+
+#disco {
+    width: 40px;
+    animation: 3s infinite linear, spin 2s infinite linear;
+}
+
+#playpause {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
