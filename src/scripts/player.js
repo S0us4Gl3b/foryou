@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
+    iniciaVideo()
     // Evento de clique no botão para tocar o vídeo
     playButton.addEventListener('click', () => {
         iniciaVideo()

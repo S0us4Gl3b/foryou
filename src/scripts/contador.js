@@ -27,7 +27,7 @@ let dataAtual = new Date()
         atualizarValores(anos, meses, dias, horas, minutos, segundos)
     }
 
-    setInterval (() => {
+    setInterval (async () => {
         dataAtual = new Date() //Atualiza a data atual a cada ciclo
         calcula_data(dataAtual, dataInicioNamoro)
     }, 1000)
