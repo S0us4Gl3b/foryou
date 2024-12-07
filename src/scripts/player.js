@@ -33,8 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 
-    // Evento de clique no botão para tocar o vídeo
-    playButton.addEventListener('click', () => {
+    function iniciaVideo () {
         const videoUrl = urlFixaParaVideo //youtubeLinkInput.value.trim();
         const videoId = extractVideoId(videoUrl)
 
@@ -47,6 +46,12 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             alert('Por favor, insira um link válido do YouTube.')
         }
+    }
+
+
+    // Evento de clique no botão para tocar o vídeo
+    playButton.addEventListener('click', () => {
+        iniciaVideo()
     })
 
     // Evento de clique no botão para pausar ou retomar o vídeo
