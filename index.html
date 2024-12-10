@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="/src/styles/home.css">
     <link rel="stylesheet" href="/src/styles/contador.css">
     <link rel="stylesheet" href="/src/styles/player.css">
+    
+    <link rel="stylesheet" href="/src/styles/section-control.css">
+    
+    <script src="/src/scripts/section-control.js"></script>
     <script src="/src/scripts/contador.js"></script>
     <script src="/src/scripts/player.js"></script>
     <script src="/src/scripts/animações.js"></script>
@@ -14,7 +18,17 @@
     <title>For You</title>
 </head>
 <body>
-    <section>
+
+    <section id="sec-coracao">
+        
+        <div id="coracao-div">
+            <div id="container"></div>
+            <img src="/src/images/coracaorem.png" alt="img_coração">
+            <span></span>
+        </div>
+    </section>
+
+    <section id="sec-home">
         <div class="home">
             <p class="foryou_Name">
                 <img src="/src/images/logo/For.png" alt="">
@@ -48,7 +62,7 @@
         </div>
     </section>
     
-    <section>
+    <section id="sec-player">
 
         <div id="playmusic">
             <button id="playButton">Tocar Música </button>
