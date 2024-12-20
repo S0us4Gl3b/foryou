@@ -1,5 +1,5 @@
 #player {
-    display: none;
+    display: flex;
 }
 
 #playmusic {

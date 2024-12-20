@@ -1,7 +1,3 @@
-section {
-    display: none;
-}
-
 #sec-coracao {
     display: flex; /* Exibe esta seção */
     justify-content: center; /* Centraliza horizontalmente */
@@ -20,9 +16,9 @@ section {
     position: absolute; /* Posiciona a imagem no fundo */
     top: 0;
     left: 0;
-    width: 100%; /* Preenche toda a largura do contêiner */
-    height: 100%; /* Preenche toda a altura do contêiner */
-    object-fit: cover; /* Ajusta a proporção da imagem */
+    width: 95%; /* Preenche toda a largura do contêiner */
+    height: 90%; /* Preenche toda a altura do contêiner */
+    /*object-fit: cover; /* Ajusta a proporção da imagem */
     z-index: 1; /* Define a profundidade da imagem */
     transition: all 0.2s;
     animation: balanco 3s ease-out infinite;
@@ -47,8 +43,6 @@ section {
     z-index: 2; /* Fica acima da imagem */
     white-space: nowrap; /* Impede quebra de linha */
 }
-
-
 
 
 #container {
