@@ -9,10 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoContainer = document.getElementById('player');
     const btnpausePlay = document.getElementById('playButton');
     
-    window.modificaBtnPlayPause = true; // Flag para controlar o estado do botão de play/pause
-    
     let youtubePlayer = null; // Variável para armazenar o player do YouTube
-    
+    let playerIsPlaying = false; // Variável para controlar o estado do player (se está tocando ou não)
+
     // Extrair o ID do vídeo da URL
     const urlRegex = /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([\w-]+)|youtu\.be\/([\w-]+)/;
     const match = videoLink.match(urlRegex);
@@ -51,9 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Função chamada quando o player está pronto
-    function onPlayerReady() {
+    function onPlayerReady(event) {
         console.log('Player pronto!');
-        youtubePlayer.playVideo();
+        youtubePlayer.playVideo(); // Inicia o vídeo automaticamente
+        playerIsPlaying = true; // Marca o player como tocando
     }
 
     // Função chamada em caso de erro no player
@@ -64,14 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para alternar entre play e pause
     function togglePlayPause() {
         if (youtubePlayer) {
-            if (modificaBtnPlayPause) {
+            if (playerIsPlaying) {
                 youtubePlayer.pauseVideo();
-                modificaBtnPlayPause = false;
+                playerIsPlaying = false; // Atualiza o estado para pausado
             } else {
                 youtubePlayer.playVideo();
-                modificaBtnPlayPause = true;
+                playerIsPlaying = true; // Atualiza o estado para tocando
             }
-            console.log('Botão de play/pause estado:', modificaBtnPlayPause);
         }
     }
 
@@ -82,7 +81,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função chamada quando a API do YouTube está pronta
     window.onYouTubeIframeAPIReady = createYouTubePlayer;
-
-    console.log('Botão de play/pause estado:', modificaBtnPlayPause);
 
 });
