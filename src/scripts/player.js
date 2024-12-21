@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoContainer = document.getElementById('player');
     const btnPlay = document.getElementById('playButton');
     
+    const divBotaoPlayPause = document.getElementById('playpause');
+
     const btnpausePlayimg = document.getElementById('playpauseimg');
 
 
@@ -92,11 +94,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             console.log('Botão de play/pause estado:', modificaBtnPlayPause);
         }
+
     }
 
     // Event listener para o botão de play/pause
     btnPlay.addEventListener('click', () => {
         togglePlayPause();
+        btnPlay.style.display = 'none'
+        divBotaoPlayPause.style.display = 'flex'
+
+    });
+
+    btnpausePlayimg.addEventListener('click', () => {
+        togglePlayPause();
+        
     });
 
     // Função chamada quando a API do YouTube está pronta
