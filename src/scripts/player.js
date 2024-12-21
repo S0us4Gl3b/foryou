@@ -83,19 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.onYouTubeIframeAPIReady = createYouTubePlayer;
 
 
-    if (youtubePlayer) {
-        if (modificaBtnPlayPause) {
-            youtubePlayer.pauseVideo();
-            modificaBtnPlayPause = false;
-        } else {
-            youtubePlayer.playVideo();
-            modificaBtnPlayPause = true;
-        }
-        console.log('Botão de play/pause estado:', modificaBtnPlayPause);
-    }
-
-
-
     console.log('Botão de play/pause estado:', modificaBtnPlayPause);
 
 });

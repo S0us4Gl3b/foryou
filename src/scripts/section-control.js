@@ -9,6 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const home = document.getElementsByClassName('home')
 
+
+    function playMusic() {
+        if (youtubePlayer) {
+            youtubePlayer.playVideo();  // Inicia o vídeo
+            modificaBtnPlayPause = true; // Atualiza o estado do botão de play/pause
+        }
+    }
+
     function modificaDivDisplay () {
         secCoracao.style.display = 'none';  // Esconde a seção do coração
         divHome.style.display = 'flex'
@@ -49,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const y = e.clientY;
 
             // Iniciar player
-            modificaBtnPlayPause = false
+            playMusic()
 
             // Gerar a explosão de corações
             createHeartExplosion(x, y);
