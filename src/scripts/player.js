@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     // Adicionar a API do YouTube dinamicamente
     const tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função para criar o player do YouTube
     function createYouTubePlayer() {
-        if (videoId) {
+        if (videoId && !youtubePlayer) { // Evitar recriar o player se já existir
             youtubePlayer = new YT.Player('player', {
                 height: '315',
                 width: '560',
@@ -35,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Ajustar o tamanho do player
             setPlayerSize();
             window.addEventListener('resize', setPlayerSize);
-        } else {
+        } else if (!videoId) {
             document.getElementById('player').innerHTML = '<p style="color: red;">Invalid YouTube URL. Please try again.</p>';
         }
     }
@@ -80,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         togglePlayPause();
     });
 
-    // Inicia o player assim que a API do YouTube estiver carregada
+    // Função chamada quando a API do YouTube está pronta
     window.onYouTubeIframeAPIReady = createYouTubePlayer;
 
 });
