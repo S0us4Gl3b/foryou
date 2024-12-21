@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Direção aleatória para explosão
             const angle = Math.random() * 2 * Math.PI;
-            const distance = Math.random() * 800;  // Máxima distância para o qual o coração se moverá
+            const distance = Math.random() * window.innerHeight;  // Máxima distância para o qual o coração se moverá
             const xOffset = Math.cos(angle) * distance;
             const yOffset = Math.sin(angle) * distance;
 
@@ -63,6 +63,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Gerar a explosão de corações
             createHeartExplosion(x, y);
             modificaDivDisplay()
+            
+
+            function funcaoativachuva () {
+                ativachuva =true
+            }
+            setInterval(funcaoativachuva, 2000)
+            
+
         });
 
     
