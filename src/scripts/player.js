@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+
+  
+
+
+
+
     const videoLink = "https://www.youtube.com/watch?v=Br2rofxz_C0";
     const videoContainer = document.getElementById('player');
 
@@ -65,13 +71,5 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(modificaBtnPlayPause)
 
     })
-
-    mostraEstadoVariavelPlayPause(modificaBtnPlayPause)
-
-    async function mostraEstadoVariavelPlayPause(modificaBtnPlayPause) {
-        console.log(modificaBtnPlayPause)
-        await sleep(1)
-    }
-
 
 });
