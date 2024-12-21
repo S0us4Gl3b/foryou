@@ -66,5 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     })
 
+    mostraEstadoVariavelPlayPause(modificaBtnPlayPause)
+
+    async function mostraEstadoVariavelPlayPause(modificaBtnPlayPause) {
+        console.log(modificaBtnPlayPause)
+        await sleep(1)
+    }
+
 
 });
