@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoContainer = document.getElementById('player');
     const btnpausePlay = document.getElementById('playButton');
     
-    window.modificaBtnPlayPause = false; // Flag para controlar o estado do botão de play/pause
+    window.modificaBtnPlayPause = true; // Flag para controlar o estado do botão de play/pause
     
     let youtubePlayer = null; // Variável para armazenar o player do YouTube
     
@@ -81,5 +81,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função chamada quando a API do YouTube está pronta
     window.onYouTubeIframeAPIReady = createYouTubePlayer;
+
+
+    if (youtubePlayer) {
+        if (modificaBtnPlayPause) {
+            youtubePlayer.pauseVideo();
+            modificaBtnPlayPause = false;
+        } else {
+            youtubePlayer.playVideo();
+            modificaBtnPlayPause = true;
+        }
+        console.log('Botão de play/pause estado:', modificaBtnPlayPause);
+    }
+
+
+
+    console.log('Botão de play/pause estado:', modificaBtnPlayPause);
 
 });
