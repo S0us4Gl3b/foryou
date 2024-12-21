@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    const videoLink = "https://www.youtube.com/watch?v=fXw0jcYbqdo";
+    const videoLink = "https://www.youtube.com/watch?v=iKzRIweSBLA";
     
     const videoContainer = document.getElementById('player');
     const btnPlay = document.getElementById('playButton');
