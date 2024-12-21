@@ -1,9 +1,22 @@
+@font-face {
+    font-family: 'Love & Trust';
+    src: url("/src/font/Love\ &\ Trust.ttf") 
+}
+
 #sec-player {
     display: none;
 }
 
 #player {
     display: flex;
+}
+
+#texto-nossaMusica {
+    font-family: 'Love & Trust';
+    color: #fff;
+    font-style: italic;
+    font-size: 25px;
+    margin-bottom: 25px;
 }
 
 #playmusic {
