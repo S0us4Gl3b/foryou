@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const btnpausePlay = document.getElementById('playButton') 
 
-    var modificaBtnPlayPause = false
+    window.modificaBtnPlayPause = false
 
     // Extract the video ID from the URL
     const urlRegex = /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([\w-]+)|youtu\.be\/([\w-]+)/;

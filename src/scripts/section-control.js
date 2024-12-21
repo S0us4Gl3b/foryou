@@ -48,6 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const x = e.clientX;
             const y = e.clientY;
 
+            // Iniciar player
+            modificaBtnPlayPause = true
+
             // Gerar a explosão de corações
             createHeartExplosion(x, y);
             modificaDivDisplay()
