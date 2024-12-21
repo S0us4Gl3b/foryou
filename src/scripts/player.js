@@ -113,6 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função chamada quando a API do YouTube está pronta
     window.onYouTubeIframeAPIReady = createYouTubePlayer;
 
-    console.log('Botão de play/pause estado:', modificaBtnPlayPause);
+    //console.log('Botão de play/pause estado:', modificaBtnPlayPause);
 
 });
