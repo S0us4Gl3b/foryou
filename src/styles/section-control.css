@@ -4,12 +4,14 @@
     align-items: center; /* Centraliza verticalmente */
     width: 100vw;
     height: 100vh;
+    
 }
 
 #coracao-div {
     position: relative; /* Define um contexto de posicionamento */
     width: 200px; /* Ajuste conforme necessário */
     height: 200px; /* Ajuste conforme necessário */
+    overflow-y: hidden;
 }
 
 #coracao-div img {

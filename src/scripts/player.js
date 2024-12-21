@@ -6,12 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     const videoLink = "https://www.youtube.com/watch?v=Br2rofxz_C0";
+    
     const videoContainer = document.getElementById('player');
-    const btnpausePlay = document.getElementById('playButton');
+    const btnPlay = document.getElementById('playButton');
+    
+    const btnpausePlayimg = document.getElementById('playpauseimg');
+
+
+    window.modificaBtnPlayPause = true; // Flag para controlar o estado do botão de play/pause
     
     let youtubePlayer = null; // Variável para armazenar o player do YouTube
-    let playerIsPlaying = false; // Variável para controlar o estado do player (se está tocando ou não)
-
+    
     // Extrair o ID do vídeo da URL
     const urlRegex = /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([\w-]+)|youtu\.be\/([\w-]+)/;
     const match = videoLink.match(urlRegex);
@@ -50,10 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Função chamada quando o player está pronto
-    function onPlayerReady(event) {
+    function onPlayerReady() {
         console.log('Player pronto!');
-        youtubePlayer.playVideo(); // Inicia o vídeo automaticamente
-        playerIsPlaying = true; // Marca o player como tocando
+        youtubePlayer.playVideo();
     }
 
     // Função chamada em caso de erro no player
@@ -61,25 +65,43 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Erro no player:', e);
     }
 
+    function alteraImgBtnPlayPause (newSrc) {
+        btnpausePlayimg.src = newSrc
+    }
+
     // Função para alternar entre play e pause
     function togglePlayPause() {
         if (youtubePlayer) {
-            if (playerIsPlaying) {
+            if (modificaBtnPlayPause) {
+
                 youtubePlayer.pauseVideo();
-                playerIsPlaying = false; // Atualiza o estado para pausado
+                modificaBtnPlayPause = false;
+                
+                btnpausePlayimg.style.display= 'flex'
+                const newImageSrc = 'src/images/play.png'
+                alteraImgBtnPlayPause(newImageSrc)
+                console.log(newImageSrc)
+
             } else {
                 youtubePlayer.playVideo();
-                playerIsPlaying = true; // Atualiza o estado para tocando
+                modificaBtnPlayPause = true;
+                btnpausePlayimg.style.display= 'flex'
+                const newImageSrc = 'src/images/pause.png'
+                alteraImgBtnPlayPause(newImageSrc)
             }
+
+            console.log('Botão de play/pause estado:', modificaBtnPlayPause);
         }
     }
 
     // Event listener para o botão de play/pause
-    btnpausePlay.addEventListener('click', () => {
+    btnPlay.addEventListener('click', () => {
         togglePlayPause();
     });
 
     // Função chamada quando a API do YouTube está pronta
     window.onYouTubeIframeAPIReady = createYouTubePlayer;
+
+    console.log('Botão de play/pause estado:', modificaBtnPlayPause);
 
 });

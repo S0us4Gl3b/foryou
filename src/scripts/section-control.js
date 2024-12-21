@@ -1,17 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     const secCoracao = document.getElementById('sec-coracao')
-
+    const secplayer = document.getElementById('sec-player')
     const container = document.getElementById('container');
     const coracaoDiv = document.getElementById('coracao-div');
 
     const divHome = document.getElementById('sec-home')
 
     const home = document.getElementsByClassName('home')
-
-
-    
-
 
     function playMusic() {
         if (youtubePlayer) {
@@ -59,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const x = e.clientX;
             const y = e.clientY;
 
-           
+            secplayer.style.display = 'block'
 
             // Iniciar player
             //playMusic()

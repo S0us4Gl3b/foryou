@@ -1,3 +1,7 @@
+#sec-player {
+    display: none;
+}
+
 #player {
     display: flex;
 }
@@ -27,6 +31,7 @@
     background-color: #DC2626;
     color: white;
     font-size: 18px;
+    margin-bottom: 20px;
 }
 
 #disco {
@@ -35,10 +40,16 @@
 }
 
 #playpause {
-    display: none;
+    display: flex;
+    background-color: rgba(240, 248, 255, 0);
+    z-index: 5;
+}
+
+#playpause img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    z-index: 10;
 }
 
 @keyframes spin {
