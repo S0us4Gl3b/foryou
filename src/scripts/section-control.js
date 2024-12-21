@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     
     const secCoracao = document.getElementById('sec-coracao')
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createHeartExplosion(x, y) {
         // Para espalhar corações por toda a tela
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 120; i++) {
             const heart = document.createElement('div');
             heart.classList.add('heart');
 
