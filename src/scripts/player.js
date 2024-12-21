@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função chamada quando o player está pronto
     function onPlayerReady() {
         console.log('Player pronto!');
+        youtubePlayer.playVideo();
     }
 
     // Função chamada em caso de erro no player
@@ -81,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função chamada quando a API do YouTube está pronta
     window.onYouTubeIframeAPIReady = createYouTubePlayer;
-
 
     console.log('Botão de play/pause estado:', modificaBtnPlayPause);
 

@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const home = document.getElementsByClassName('home')
 
 
+    
+
+
     function playMusic() {
         if (youtubePlayer) {
             youtubePlayer.playVideo();  // Inicia o vídeo
@@ -56,8 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const x = e.clientX;
             const y = e.clientY;
 
+           
+
             // Iniciar player
-            playMusic()
+            //playMusic()
 
             // Gerar a explosão de corações
             createHeartExplosion(x, y);
